@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Combined Head Section: Using the first page's head code (exactly as provided) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Water Hole: Connect CRM - Building Community Networks</title>
+  <!-- Tailwind CSS and Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <style>
+    /* Background Animations */
+    .bg-gradient-flowing {
+      background: linear-gradient(135deg, #0056b3, #008080, #4682B4);
+      background-size: 200% 200%;
+      animation: gradient 15s ease infinite;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Feature Card Animations */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    /* Floating CTA */
+    .floating-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 50;
+      transition: all 0.3s ease;
+    }
+    .floating-cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    
+    /* CRM Page Styles (from second page) */
+    /* Background Animations */
+    /* (Repeated from above to preserve exact code) */
+    .bg-gradient-flowing {
+      background: linear-gradient(135deg, #0056b3, #008080, #4682B4);
+      background-size: 200% 200%;
+      animation: gradient 15s ease infinite;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* Header tools dropdown (simulate notes/charts) */
+    .tools-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 200px;
+      display: none;
+      z-index: 50;
+    }
+    .tools-dropdown.active { display: block; }
+    .tools-dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #374151;
+      text-decoration: none;
+    }
+    .tools-dropdown a:hover {
+      background-color: #f3f4f6;
+    }
+    /* Organization Card Hover */
+    .org-card {
+      transition: all 0.3s ease;
+    }
+    .org-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    /* Linked Card highlight */
+    .linked {
+      border: 2px solid #3B82F6 !important;
+    }
+    /* Link selection mode highlight */
+    .linkable {
+      cursor: pointer;
+      outline: 2px dashed #3B82F6;
+    }
+    .selected-for-link {
+      border: 2px solid #8B5CF6 !important;
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.7) !important;
+    }
+    /* Modal styles */
+    #org-details-modal {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #org-details-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #org-details-panel {
+      transform: scale(0.9);
+      transition: transform 0.3s;
+    }
+    #org-details-modal.active #org-details-panel {
+      transform: scale(1);
+    }
+    /* Link group colors */
+    .link-group-1 { border-color: #3B82F6 !important; box-shadow: 0 0 10px rgba(59, 130, 246, 0.7) !important; }
+    .link-group-2 { border-color: #EC4899 !important; box-shadow: 0 0 10px rgba(236, 72, 153, 0.7) !important; }
+    .link-group-3 { border-color: #10B981 !important; box-shadow: 0 0 10px rgba(16, 185, 129, 0.7) !important; }
+    .link-group-4 { border-color: #F59E0B !important; box-shadow: 0 0 10px rgba(245, 158, 11, 0.7) !important; }
+    .link-group-5 { border-color: #8B5CF6 !important; box-shadow: 0 0 10px rgba(139, 92, 246, 0.7) !important; }
+    .link-group-6 { border-color: #EF4444 !important; box-shadow: 0 0 10px rgba(239, 68, 68, 0.7) !important; }
+  </style>
+</head>
+<body class="font-sans bg-gray-50">
+  <!-- Landing Page Section (First Page) -->
+  <div id="landing-page">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+      <div class="container mx-auto px-6 py-3">
+        <div class="flex items-center justify-between">
+          <a href="#" class="flex items-center space-x-2">
+            <div class="w-10 h-10 rounded-full bg-gradient-flowing flex items-center justify-center text-white">
+              <svg class="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L8 6H4V10L2 12L4 14V18H8L12 22L16 18H20V14L22 12L20 10V6H16L12 2Z" fill="currentColor" stroke="white" stroke-width="1"/>
+                <circle cx="12" cy="12" r="3" fill="white"/>
+              </svg>
+            </div>
+            <span class="text-xl font-bold text-gray-800">Water Hole: Connect CRM</span>
+          </a>
+          <div class="flex space-x-6">
+            <a href="#about" class="text-gray-700 hover:text-blue-600">About</a>
+            <a href="#features" class="text-gray-700 hover:text-blue-600">Features</a>
+            <a href="#how-it-works" class="text-gray-700 hover:text-blue-600">How It Works</a>
+            <a href="#organizations" class="text-gray-700 hover:text-blue-600">Organizations</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section with CTA -->
+    <section class="py-20 bg-gradient-flowing text-white">
+      <div class="container mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Connect Organizations. Build Communities.</h1>
+        <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Water Hole is a specialized CRM system designed to help community organizations in Milwaukee discover, connect, and collaborate with each other.</p>
+        <a href="./crm.html" class="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg">
+          Enter Connect CRM
+        </a>
+      </div>
+    </section>
+
+    <!-- About Water Hole Section -->
+    <section id="about" class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-10 md:mb-0">
+            <img src="/api/placeholder/600/400" alt="Community Collaboration" class="rounded-lg shadow-lg" />
+          </div>
+          <div class="md:w-1/2 md:pl-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">About Water Hole</h2>
+            <p class="text-lg text-gray-600 mb-6">Water Hole is an initiative created to transform how community organizations work together in Milwaukee. We recognized that organizations addressing interconnected community challenges often operate in isolation, creating gaps and inefficiencies in service delivery.</p>
+            <p class="text-lg text-gray-600 mb-6">Our Connect CRM system provides the digital infrastructure that enables organizations from different sectors to discover each other, form partnerships, coordinate services, and measure collective impact. By connecting organizations across traditional boundaries, we're building a more collaborative and effective community service ecosystem.</p>
+            <p class="text-lg text-gray-600 mb-6">The platform currently connects over 100 organizations across 20+ service categories, including youth development, housing, food security, workforce development, education, and health services.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Problem We Solve -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">The Challenge We Address</h2>
+          <p class="text-xl text-gray-600 max-w-4xl mx-auto">Community organizations often work in isolation despite serving the same populations and addressing interconnected issues.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="feature-card bg-white rounded-lg shadow-md p-6">
+            <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600 mb-4">
+              <i class="fas fa-unlink text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Disconnected Services</h3>
+            <p class="text-gray-600">Organizations providing complementary services often don't know about each other or lack formal channels for collaboration, creating gaps and duplications in service.</p>
+          </div>
+          
+          <div class="feature-card bg-white rounded-lg shadow-md p-6">
+            <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mb-4">
+              <i class="fas fa-share-alt text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Resource Inefficiency</h3>
+            <p class="text-gray-600">Limited community resources are often stretched thin when organizations cannot easily share expertise, facilities, funding opportunities, and best practices.</p>
+          </div>
+          
+          <div class="feature-card bg-white rounded-lg shadow-md p-6">
+            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mb-4">
+              <i class="fas fa-users text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Fragmented Client Journeys</h3>
+            <p class="text-gray-600">Community members must navigate complex, disconnected systems to access the full range of services they need, creating barriers to support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Connect CRM Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div class="feature-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="h-3 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mb-4">
+                <i class="fas fa-search text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Organization Directory</h3>
+              <p class="text-gray-600 mb-4">A comprehensive, searchable database of community organizations across multiple service categories.</p>
+              <ul class="text-gray-600 space-y-2 list-disc list-inside">
+                <li>Advanced filtering by service type, location, and status</li>
+                <li>Detailed organization profiles with contact information</li>
+                <li>At-a-glance view of organization status and availability</li>
+                <li>Quick access to organization details and services</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Feature 2 -->
+          <div class="feature-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="h-3 bg-gradient-to-r from-purple-500 to-purple-600"></div>
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mb-4">
+                <i class="fas fa-link text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Organization Linking</h3>
+              <p class="text-gray-600 mb-4">Create formal connections between organizations to facilitate partnerships and collaborations.</p>
+              <ul class="text-gray-600 space-y-2 list-disc list-inside">
+                <li>Visual link group management with color-coding</li>
+                <li>Multiple organization selection for batch linking</li>
+                <li>Link request and confirmation workflow</li>
+                <li>Network visualization of organizational relationships</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Feature 3 -->
+          <div class="feature-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="h-3 bg-gradient-to-r from-green-500 to-green-600"></div>
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-4">
+                <i class="fas fa-project-diagram text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Project Management</h3>
+              <p class="text-gray-600 mb-4">Track and manage collaborative projects, initiatives, and partnerships.</p>
+              <ul class="text-gray-600 space-y-2 list-disc list-inside">
+                <li>Project creation and assignment to organizations</li>
+                <li>Project description and documentation</li>
+                <li>Timeline tracking and milestone management</li>
+                <li>Cross-organizational project visibility</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Feature 4 -->
+          <div class="feature-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="h-3 bg-gradient-to-r from-yellow-500 to-yellow-600"></div>
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mb-4">
+                <i class="fas fa-map-marked-alt text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Member Mapping</h3>
+              <p class="text-gray-600 mb-4">Visualize relationships between organization members to identify key connectors.</p>
+              <ul class="text-gray-600 space-y-2 list-disc list-inside">
+                <li>Individual staff and member profiles</li>
+                <li>Relationship mapping between individuals</li>
+                <li>Identification of key network connectors</li>
+                <li>Cross-organizational relationship visualization</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Feature 5 -->
+          <div class="feature-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="h-3 bg-gradient-to-r from-red-500 to-red-600"></div>
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600 mb-4">
+                <i class="fas fa-sticky-note text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Notes & Charts</h3>
+              <p class="text-gray-600 mb-4">Document conversations, meetings, and outcomes with integrated note-taking.</p>
+              <ul class="text-gray-600 space-y-2 list-disc list-inside">
+                <li>Meeting notes and conversation tracking</li>
+                <li>Visual charting of relationships and processes</li>
+                <li>Shareable documentation with permissions</li>
+                <li>Integrated data visualization tools</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Feature 6 -->
+          <div class="feature-card bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="h-3 bg-gradient-to-r from-indigo-500 to-indigo-600"></div>
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mb-4">
+                <i class="fas fa-chart-bar text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Impact Measurement</h3>
+              <p class="text-gray-600 mb-4">Track and measure the collective impact of collaborative efforts.</p>
+              <ul class="text-gray-600 space-y-2 list-disc list-inside">
+                <li>Customizable metrics and KPIs</li>
+                <li>Cross-organizational outcome tracking</li>
+                <li>Data visualization and reporting</li>
+                <li>Progress monitoring against goals</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">How Connect CRM Works</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          <div>
+            <img src="/api/placeholder/500/300" alt="Organization Profile" class="rounded-lg shadow-lg mb-6" />
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">1. Organization Profiles</h3>
+            <p class="text-gray-600">Each organization in the system has a comprehensive profile that includes:</p>
+            <ul class="text-gray-600 space-y-2 list-disc list-inside mt-4">
+              <li>Organization name, category, and contact information</li>
+              <li>Detailed description of services provided</li>
+              <li>Physical location and service area</li>
+              <li>Operating hours and current status</li>
+              <li>Staff members and key contacts</li>
+            </ul>
+          </div>
+          
+          <div>
+            <img src="/api/placeholder/500/300" alt="Discover Organizations" class="rounded-lg shadow-lg mb-6" />
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">2. Discover Organizations</h3>
+            <p class="text-gray-600">Users can easily find potential partners through multiple discovery methods:</p>
+            <ul class="text-gray-600 space-y-2 list-disc list-inside mt-4">
+              <li>Search by organization name, service type, or location</li>
+              <li>Filter by category, status, or services offered</li>
+              <li>Browse the visual organization directory</li>
+              <li>View recommended organizations based on complementary services</li>
+              <li>Explore existing organization networks</li>
+            </ul>
+          </div>
+          
+          <div>
+            <img src="/api/placeholder/500/300" alt="Create Connections" class="rounded-lg shadow-lg mb-6" />
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">3. Create Connections</h3>
+            <p class="text-gray-600">The system facilitates intentional relationship-building between organizations:</p>
+            <ul class="text-gray-600 space-y-2 list-disc list-inside mt-4">
+              <li>Request links with individual organizations</li>
+              <li>Create link groups with multiple organizations</li>
+              <li>Accept or decline incoming link requests</li>
+              <li>Visually manage organization connections</li>
+              <li>Document partnership details and agreements</li>
+            </ul>
+          </div>
+          
+          <div>
+            <img src="/api/placeholder/500/300" alt="Collaborate" class="rounded-lg shadow-lg mb-6" />
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">4. Collaborate & Track Impact</h3>
+            <p class="text-gray-600">Connected organizations can work together more effectively:</p>
+            <ul class="text-gray-600 space-y-2 list-disc list-inside mt-4">
+              <li>Create and manage joint projects</li>
+              <li>Track project milestones and progress</li>
+              <li>Share notes and documentation</li>
+              <li>Measure collective outcomes and impact</li>
+              <li>Visualize network relationships and referral pathways</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="text-center">
+          <a href="./crm.html" class="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg">
+            Enter Connect CRM Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Organization Categories Section -->
+    <section id="organizations" class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Organizations in Our Network</h2>
+        
+        <div class="mb-10">
+          <h3 class="text-xl font-bold text-gray-800 mb-6">Service Categories</h3>
+          <div class="flex flex-wrap gap-3">
+            <span class="px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full">Youth Development</span>
+            <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full">Food Security</span>
+            <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full">Food Assistance</span>
+            <span class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full">Community Development</span>
+            <span class="px-4 py-2 bg-red-100 text-red-800 rounded-full">Employment</span>
+            <span class="px-4 py-2 bg-red-100 text-red-800 rounded-full">Workforce Development</span>
+            <span class="px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full">Housing</span>
+            <span class="px-4 py-2 bg-indigo-100 text-indigo-800 rounded-full">Housing Improvement</span>
+            <span class="px-4 py-2 bg-pink-100 text-pink-800 rounded-full">Mental Health</span>
+            <span class="px-4 py-2 bg-pink-100 text-pink-800 rounded-full">Mental Health Support</span>
+            <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full">Healthcare Services</span>
+            <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full">Family Services</span>
+            <span class="px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full">Youth Services</span>
+            <span class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full">Education Support</span>
+            <span class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full">And many more...</span>
+          </div>
+        </div>
+        
+        <div class="mb-12">
+          <h3 class="text-xl font-bold text-gray-800 mb-6">Featured Organizations</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-gray-50 rounded-lg p-4 shadow-md">
+              <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-800 mr-3 font-bold">
+                  RR
+                </div>
+                <h4 class="font-bold">Running Rebels</h4>
+              </div>
+              <p class="text-sm text-gray-600">Youth development, mentoring, and violence prevention programs serving Milwaukee's urban communities.</p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-4 shadow-md">
+              <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-800 mr-3 font-bold">
+                  HT
+                </div>
+                <h4 class="font-bold">Hunger Task Force</h4>
+              </div>
+              <p class="text-sm text-gray-600">A free, local food bank providing nutritious food through pantry networks.</p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-4 shadow-md">
+              <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-800 mr-3 font-bold">
+                  WW
+                </div>
+                <h4 class="font-bold">Walnut Way</h4>
+              </div>
+              <p class="text-sm text-gray-600">Neighborhood revitalization, economic development, and environmental stewardship in Lindsay Heights.</p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-4 shadow-md">
+              <div class="flex items-center mb-4">
+                <div class="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-800 mr-3 font-bold">
+                  CA
+                </div>
+                <h4 class="font-bold">Community Advocates</h4>
+              </div>
+              <p class="text-sm text-gray-600">Provides housing assistance, utility support, and homeless prevention services.</p>
+            </div>
+          </div>
+          <p class="text-center text-gray-600 mt-6">Over 100 organizations across Milwaukee are currently connected through the Water Hole CRM system.</p>
+        </div>
+        
+        <div class="text-center">
+          <a href="./crm.html" class="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg">
+            Explore All Organizations
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 bg-gradient-flowing text-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">Benefits of Using Connect CRM</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm">
+            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-blue-600 mb-6">
+              <i class="fas fa-handshake text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Stronger Partnerships</h3>
+            <p>Discover and connect with organizations that complement your services, creating more effective collaborations.</p>
+          </div>
+          
+          <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm">
+            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-blue-600 mb-6">
+              <i class="fas fa-exchange-alt text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Streamlined Referrals</h3>
+            <p>Create seamless pathways for clients to access complementary services across organizations.</p>
+          </div>
+          
+          <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm">
+            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-blue-600 mb-6">
+              <i class="fas fa-hand-holding-usd text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Resource Optimization</h3>
+            <p>Share resources, facilities, and expertise across organizations to maximize community impact.</p>
+          </div>
+          
+          <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-sm">
+            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-blue-600 mb-6">
+              <i class="fas fa-chart-line text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Measurable Impact</h3>
+            <p>Track and measure the collective outcomes of collaborative efforts to demonstrate value.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Ready to Connect Your Organization?</h2>
+        <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">Join the network of community organizations working together to create greater impact in Milwaukee.</p>
+        <a href="./crm.html" class="inline-block px-10 py-5 bg-blue-600 text-white rounded-lg font-bold text-xl hover:bg-blue-700 transition-colors shadow-lg">
+          Enter Connect CRM Now
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="flex items-center mb-6 md:mb-0">
+            <div class="w-10 h-10 rounded-full bg-gradient-flowing flex items-center justify-center text-white mr-3">
+              <svg class="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L8 6H4V10L2 12L4 14V18H8L12 22L16 18H20V14L22 12L20 10V6H16L12 2Z" fill="currentColor" stroke="white" stroke-width="1"/>
+                <circle cx="12" cy="12" r="3" fill="white"/>
+              </svg>
+            </div>
+            <span class="text-xl font-bold">Water Hole: Connect CRM</span>
+          </div>
+          <p class="text-gray-400">Building stronger communities through connected organizations in Milwaukee.</p>
+        </div>
+        <div class="border-t border-gray-700 mt-6 pt-6 text-center">
+          <p class="text-sm text-gray-400">© 2025 Water Hole. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating CTA Button -->
+    <a href="./crm.html" class="floating-cta px-6 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg hover:bg-blue-700 transition-colors">
+      Enter CRM <i class="fas fa-arrow-right ml-2"></i>
+    </a>
+
+    <script>
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    </script>
+  </div>
+  <!-- End of Landing Page Section -->
+
+  <!-- CRM Interface Section (Second Page) -->
+  <div id="crm-page" style="display: none;">
+    <!-- Header with fixed tools -->
+    <header class="fixed w-full bg-white bg-opacity-95 shadow-md z-50">
+      <div class="container mx-auto px-6 py-3 flex justify-between items-center relative">
+        <a href="#" class="flex items-center space-x-2">
+          <div class="w-10 h-10 rounded-full bg-gradient-flowing flex items-center justify-center text-white">
+            <svg class="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L8 6H4V10L2 12L4 14V18H8L12 22L16 18H20V14L22 12L20 10V6H16L12 2Z" fill="currentColor" stroke="white" stroke-width="1"/>
+              <circle cx="12" cy="12" r="3" fill="white"/>
+            </svg>
+          </div>
+          <span class="text-xl font-bold text-gray-800">Water Hole: Connect CRM</span>
+        </a>
+        <!-- Top Tools (Notes, Charts, Settings) -->
+        <div class="flex items-center space-x-4">
+          <div class="relative">
+            <button id="btn-notes" class="px-3 py-2 bg-gray-100 rounded-md hover:bg-gray-200">
+              <i class="fas fa-sticky-note"></i> Notes
+            </button>
+            <div id="notes-dropdown" class="tools-dropdown">
+              <a href="#" onclick="alert('Notes tool activated');">New Note</a>
+              <a href="#" onclick="alert('View Notes');">View Notes</a>
+            </div>
+          </div>
+          <div class="relative">
+            <button id="btn-charts" class="px-3 py-2 bg-gray-100 rounded-md hover:bg-gray-200">
+              <i class="fas fa-chart-line"></i> Charts
+            </button>
+            <div id="charts-dropdown" class="tools-dropdown">
+              <a href="#" onclick="alert('Add Chart');">Add Chart</a>
+              <a href="#" onclick="alert('View Charts');">View Charts</a>
+            </div>
+          </div>
+          <div class="relative">
+            <button id="btn-settings" class="px-3 py-2 bg-gray-100 rounded-md hover:bg-gray-200">
+              <i class="fas fa-cog"></i> Settings
+            </button>
+            <div id="settings-dropdown" class="tools-dropdown">
+              <a href="#" onclick="alert('Toggle Dark Mode');">Toggle Dark Mode</a>
+              <a href="#" onclick="alert('User Settings');">User Settings</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main CRM Page: Organization Directory -->
+    <main class="pt-24 pb-10">
+      <div class="container mx-auto px-6">
+        <!-- Link Mode Status Banner (hidden by default) -->
+        <div id="link-mode-banner" class="hidden mb-4 p-4 bg-indigo-100 border border-indigo-300 rounded-lg">
+          <div class="flex justify-between items-center">
+            <div>
+              <span class="font-semibold text-indigo-800">Organization Linking Mode Active</span>
+              <p class="text-indigo-600 text-sm">Click on organizations to add them to the link group. When done, click "Link Now" on the original card.</p>
+            </div>
+            <button id="cancel-linking" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">
+              Cancel Linking
+            </button>
+          </div>
+        </div>
+        
+        <!-- Search & Category Filter -->
+        <div class="flex flex-col md:flex-row items-center justify-between mb-8">
+          <div class="w-full md:w-1/2 relative">
+            <input id="crm-search" type="text" placeholder="Search organizations..." class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+            <i class="fas fa-search absolute left-4 top-4 text-gray-500"></i>
+          </div>
+          <div class="mt-4 md:mt-0">
+            <select id="crm-category" class="px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+              <option value="">All Categories</option>
+              <option value="Youth Development">Youth Development</option>
+              <option value="Food Security">Food Security</option>
+              <option value="Food Assistance">Food Assistance</option>
+              <option value="Community Development">Community Development</option>
+              <option value="Employment">Employment</option>
+              <option value="Workforce Development">Workforce Development</option>
+              <option value="Housing">Housing</option>
+              <option value="Housing Improvement">Housing Improvement</option>
+              <option value="Mental Health">Mental Health</option>
+              <option value="Mental Health Support">Mental Health Support</option>
+              <option value="Mental Health Advocacy">Mental Health Advocacy</option>
+              <option value="Healthcare Services">Healthcare Services</option>
+              <option value="Health Services">Health Services</option>
+              <option value="Basic Needs Assistance">Basic Needs Assistance</option>
+              <option value="Family Services">Family Services</option>
+              <option value="Legal Services">Legal Services</option>
+              <option value="Community Investment">Community Investment</option>
+              <option value="Economic Development">Economic Development</option>
+              <option value="Homeless Services">Homeless Services</option>
+              <option value="Veteran Support">Veteran Support</option>
+              <option value="Veteran Housing">Veteran Housing</option>
+              <option value="Youth Services">Youth Services</option>
+              <option value="Education Support">Education Support</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Organization Cards Directory -->
+        <div id="org-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Cards will be injected here via JavaScript -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Organization Details Modal -->
+    <div id="org-details-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+      <div id="org-details-panel" class="bg-white rounded-lg shadow-lg w-full max-w-4xl overflow-hidden">
+        <div class="h-4 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500"></div>
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-6">
+            <div class="flex items-center">
+              <div id="org-details-logo" class="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-gray-800 font-bold mr-4"></div>
+              <div>
+                <h2 id="org-details-name" class="text-2xl font-bold text-gray-900 mb-1"></h2>
+                <div id="org-details-category-container" class="flex space-x-2"></div>
+              </div>
+            </div>
+            <button id="close-org-details" class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times text-xl"></i>
+            </button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2">
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">About</h3>
+                <p id="org-details-about" class="text-gray-700"></p>
+              </div>
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Services</h3>
+                <ul id="org-details-services" class="list-disc list-inside text-gray-700 space-y-1"></ul>
+              </div>
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Mapping</h3>
+                <button id="view-mapping" class="px-4 py-2 bg-blue-600 text-white rounded-lg" onclick="viewMapping()">View Mapping</button>
+              </div>
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Projects</h3>
+                <div id="org-projects-container" class="mb-4 space-y-2">
+                  <!-- Projects will be displayed here -->
+                </div>
+                <button id="add-project" class="px-4 py-2 bg-green-600 text-white rounded-lg" onclick="addProject()">Add Project</button>
+              </div>
+            </div>
+            <div>
+              <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Contact Information</h3>
+                <div class="space-y-3">
+                  <div class="flex items-start">
+                    <i class="fas fa-map-marker-alt mt-1 text-yellow-600 w-5"></i>
+                    <div class="ml-3">
+                      <span class="text-sm font-medium text-gray-900">Address</span>
+                      <p id="org-modal-address" class="text-sm text-gray-700"></p>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-phone mt-1 text-yellow-600 w-5"></i>
+                    <div class="ml-3">
+                      <span class="text-sm font-medium text-gray-900">Phone</span>
+                      <p id="org-modal-phone" class="text-sm text-gray-700"></p>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-envelope mt-1 text-yellow-600 w-5"></i>
+                    <div class="ml-3">
+                      <span class="text-sm font-medium text-gray-900">Email</span>
+                      <p id="org-modal-email" class="text-sm text-blue-600 hover:text-blue-800"></p>
+                    </div>
+                  </div>
+                  <div class="flex items-start">
+                    <i class="fas fa-globe mt-1 text-yellow-600 w-5"></i>
+                    <div class="ml-3">
+                      <span class="text-sm font-medium text-gray-900">Website</span>
+                      <p id="org-modal-website" class="text-sm text-blue-600 hover:text-blue-800"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="linked-orgs-container" class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Linked Organizations</h3>
+                <div id="linked-orgs-list" class="mb-4 space-y-2">
+                  <!-- Linked orgs will be displayed here -->
+                </div>
+                <button id="modal-request-link" class="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg">Request Link</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* --- Simulated Data from CSV Files (replace with parsed CSV content) --- */
+      const organizations = [
+        // Original 6 organizations
+        {
+          id: 1,
+          name: "Running Rebels Community Organization",
+          category: "Youth Development",
+          address: "1300 W Fond Du Lac Ave, Milwaukee, WI 53205",
+          phone: "(414) 264-8222",
+          email: "info@runningrebels.org",
+          website: "https://www.runningrebels.org",
+          status: "Open Now",
+          about: "Youth development, mentoring, and violence prevention programs serving Milwaukee's urban communities. Founded in 1980.",
+          services: ["Youth Mentoring", "Athletics Programs", "Violence Prevention", "Arts & Music", "Education Support", "Community Events"],
+          members: ["Victor Barnett", "Dawn Barnett", "Alice Johnson", "Bob Smith"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 2,
+          name: "Urban Underground",
+          category: "Youth Development",
+          address: "2342 N 27th St, Milwaukee, WI 53210",
+          phone: "(414) 444-8726",
+          email: "info@urbanunderground.org",
+          website: "https://urbanunderground.org",
+          status: "Open Now",
+          about: "Youth leadership development and community organizing programs focused on social justice.",
+          services: ["Leadership Training", "Community Organizing", "Social Justice Workshops"],
+          members: ["Carmen Diaz", "Derek Lee"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 3,
+          name: "Hunger Task Force",
+          category: "Food Security",
+          address: "5000 W Electric Ave, West Milwaukee, WI",
+          phone: "(414) 777-0483",
+          email: "info@hungertaskforce.org",
+          website: "https://hungertaskforce.org",
+          status: "Open Now",
+          about: "A free, local food bank providing nutritious food through pantry networks.",
+          services: ["Food Distribution", "SNAP Outreach", "Nutrition Education"],
+          members: ["Sherrie Tussler", "Emily Rivera", "Frank Moore"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 4,
+          name: "Walnut Way Conservation Corp",
+          category: "Community Development",
+          address: "2240 N 17th St, Milwaukee, WI 53205",
+          phone: "(414) 264-2326",
+          email: "contact@walnutway.org",
+          website: "https://walnutway.org",
+          status: "Closes at 5PM",
+          about: "Neighborhood revitalization, economic development, and environmental stewardship in Lindsay Heights.",
+          services: ["Neighborhood Revitalization", "Economic Development", "Environmental Stewardship"],
+          members: ["Grace Kim", "Henry Patel"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 5,
+          name: "Employ Milwaukee",
+          category: "Workforce Development",
+          address: "2342 N 27th St, Milwaukee, WI 53210",
+          phone: "(414) 270-1700",
+          email: "info@employmilwaukee.org",
+          website: "https://employmilwaukee.org",
+          status: "Open Now",
+          about: "Career training, job placement, and workforce development for Milwaukee County residents.",
+          services: ["Job Training", "Career Counseling", "Employment Services", "Youth Apprenticeships"],
+          members: ["Chytania Brown", "Isabel Nguyen", "Jack Thompson"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 6,
+          name: "Community Advocates",
+          category: "Housing",
+          address: "728 N James Lovell St, Milwaukee, WI 53233",
+          phone: "(414) 449-4777",
+          email: "info@communityadvocates.org",
+          website: "https://communityadvocates.org",
+          status: "Open Now",
+          about: "Provides housing assistance, utility support, and homeless prevention services.",
+          services: ["Housing Assistance", "Utility Support", "Homeless Prevention"],
+          members: ["Andi Elliott", "Karen Lopez", "Liam O'Connor"],
+          projects: [],
+          linkedWith: []
+        },
+        // Housing & Homelessness
+        {
+          id: 7,
+          name: "Milwaukee Habitat for Humanity",
+          category: "Housing",
+          address: "3726 N. Booth St, Milwaukee, WI 53212",
+          phone: "(414) 562-6100",
+          email: "info@milwaukeehabitat.org",
+          website: "https://www.milwaukeehabitat.org",
+          status: "Open Now",
+          about: "Working to provide affordable homeownership opportunities in Milwaukee neighborhoods.",
+          services: ["Affordable homeownership opportunities", "Home construction and rehabilitation"],
+          members: ["Brian Sonderman", "Construction Manager", "Volunteer Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 8,
+          name: "Acts Housing",
+          category: "Housing",
+          address: "270 E. Kilbourn Ave, 5th Floor, Milwaukee, WI 53202",
+          phone: "(414) 933-2215",
+          email: "acts@actshousing.org",
+          website: "https://www.actshousing.org",
+          status: "Open Now",
+          about: "Helping families achieve homeownership through financial counseling and affordable financing options.",
+          services: ["Homebuyer counseling", "Affordable home purchase financing"],
+          members: ["Michael Gosman", "Housing Specialist", "Financial Counselor"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 9,
+          name: "Community Development Alliance (CDA)",
+          category: "Housing",
+          address: "Milwaukee, WI",
+          phone: "(414) 555-0101",
+          email: "info@housingplan.org",
+          website: "https://www.housingplan.org",
+          status: "Open Now",
+          about: "A coalition focused on affordable housing development across Milwaukee.",
+          services: ["City-wide affordable housing strategic planning", "Housing development coalition building"],
+          members: ["Coalition Leader", "Strategic Planner", "Community Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 10,
+          name: "Community First, Inc.",
+          category: "Housing",
+          address: "3942 W. Lisbon Ave, Milwaukee, WI 53208",
+          phone: "(414) 377-4481",
+          email: "info@cfmke.org",
+          website: "https://cfmke.org",
+          status: "Open Now",
+          about: "Focused on developing affordable housing and empowering residents in urban Milwaukee neighborhoods.",
+          services: ["Affordable housing development", "Home repair programs"],
+          members: ["Executive Director", "Housing Specialist", "Community Organizer"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 11,
+          name: "Community Warehouse",
+          category: "Home Improvement",
+          address: "521 S. 9th Street, Milwaukee, WI 53204",
+          phone: "(414) 383-7792",
+          email: "info@thecommunitywarehouse.org",
+          website: "http://www.thecommunitywarehouse.org",
+          status: "Open Now",
+          about: "Providing low-cost building materials to revitalize urban Milwaukee neighborhoods.",
+          services: ["Low-cost building materials", "Home repair supplies for revitalization"],
+          members: ["Warehouse Manager", "Community Outreach Coordinator", "Volunteer Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 12,
+          name: "Guest House of Milwaukee",
+          category: "Homeless Services",
+          address: "1216 N. 13th Street, Milwaukee, WI 53205",
+          phone: "(414) 345-3240",
+          email: "info@guesthousemke.org",
+          website: "https://www.guesthouseofmilwaukee.org",
+          status: "24/7 Service",
+          about: "Providing shelter, housing, education and services to Milwaukee's homeless who seek to transform their lives with dignity and purpose.",
+          services: ["Emergency shelter", "Transitional housing", "Case management"],
+          members: ["Cindy Krahenbuhl", "Shelter Manager", "Volunteer Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 13,
+          name: "Hope House of Milwaukee",
+          category: "Homeless Services",
+          address: "209 W. Orchard Street, Milwaukee, WI 53204",
+          phone: "(414) 645-2122",
+          email: "info@hopehousemke.org",
+          website: "http://www.hopehousemke.org",
+          status: "24/7 Service",
+          about: "Serving individuals and families experiencing homelessness since 1987 through shelter and supportive services.",
+          services: ["Emergency shelter", "Transitional housing", "Supportive services"],
+          members: ["Wendy Weckler", "Program Director", "Case Manager"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 14,
+          name: "Milwaukee Rescue Mission",
+          category: "Homeless Services",
+          address: "830 N. 19th Street, Milwaukee, WI 53233",
+          phone: "(414) 344-2211",
+          email: "info@milmission.org",
+          website: "http://www.milmission.org",
+          status: "24/7 Service",
+          about: "Faith-based organization providing emergency services and transformational programs to those in need.",
+          services: ["Emergency shelter", "Meal program", "Addiction recovery programs"],
+          members: ["Executive Director", "Program Manager", "Volunteer Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 15,
+          name: "Repairers of the Breach",
+          category: "Homeless Services",
+          address: "1335 W. Vliet Street, Milwaukee, WI 53205",
+          phone: "(414) 934-9305",
+          email: "info@repairers.org",
+          website: "http://www.repairers.org",
+          status: "Daytime Hours",
+          about: "Milwaukee's only daytime refuge and resource center for homeless adults run by those who have experienced homelessness.",
+          services: ["Daytime resource center", "Homeless medical clinic", "Emergency shelter (weather-related)"],
+          members: ["Executive Director", "Program Director", "Medical Clinic Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        // Food & Basic Needs
+        {
+          id: 16,
+          name: "Feeding America Eastern Wisconsin",
+          category: "Food Assistance",
+          address: "1700 W. Fond du Lac Ave, Milwaukee, WI 53205",
+          phone: "(414) 931-7400",
+          email: "info@feedingamericawi.org",
+          website: "https://www.feedingamericawi.org",
+          status: "Open Now",
+          about: "Eastern Wisconsin's leading hunger-relief organization, operating food banks that distribute millions of pounds of food annually.",
+          services: ["Food bank distribution", "Hunger relief programs"],
+          members: ["Patti Habeck", "Distribution Manager", "Volunteer Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 17,
+          name: "The Gathering of Southeast Wisconsin",
+          category: "Food Assistance",
+          address: "816 E. Juneau Avenue, Milwaukee, WI 53202",
+          phone: "(414) 272-4122",
+          email: "soulfood@thegatheringwis.org",
+          website: "https://www.thegatheringwis.org",
+          status: "Meal Times Only",
+          about: "Providing meals to the hungry at multiple sites throughout Milwaukee.",
+          services: ["Free hot meals", "Community meal sites (breakfast, lunch, dinner)"],
+          members: ["Lyn Hildenbrand", "Kitchen Manager", "Site Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 18,
+          name: "St. Vincent de Paul Society of Milwaukee",
+          category: "Basic Needs Assistance",
+          address: "9601 W. Silver Spring Dr, Milwaukee, WI 53225",
+          phone: "(414) 462-7837",
+          email: "council@svdpmilw.org",
+          website: "http://www.svdpmilw.org",
+          status: "Open Now",
+          about: "Providing person-to-person service to those in need through local volunteer conferences.",
+          services: ["Free meal programs", "Thrift stores & vouchers", "Emergency assistance"],
+          members: ["Executive Director", "Conference President", "Volunteer Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 19,
+          name: "The Salvation Army of Milwaukee County",
+          category: "Basic Needs Assistance",
+          address: "11315 W. Watertown Plank Rd, Wauwatosa, WI 53226",
+          phone: "(414) 302-4300",
+          email: "milwaukee@usc.salvationarmy.org",
+          website: "https://centralusa.salvationarmy.org/milwaukee",
+          status: "Open Now",
+          about: "Providing emergency services, food assistance, and housing programs throughout Milwaukee County.",
+          services: ["Emergency shelter", "Food pantries", "Disaster relief"],
+          members: ["Regional Commander", "Program Director", "Volunteer Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 20,
+          name: "Capuchin Community Services",
+          category: "Food Assistance",
+          address: "1702 W. Walnut Street, Milwaukee, WI 53205",
+          phone: "(414) 933-1300",
+          email: "info@capuchincommunityservices.org",
+          website: "https://www.capuchincommunityservices.org",
+          status: "Operating Hours Vary",
+          about: "Operating St. Ben's Community Meal and House of Peace programs to provide food and assistance.",
+          services: ["Free community meals (St. Ben's)", "Food pantry and clothing bank (House of Peace)"],
+          members: ["Program Director", "Volunteer Coordinator", "Pantry Manager"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 21,
+          name: "Hope Center (Waukesha)",
+          category: "Basic Needs Assistance",
+          address: "502 N. East Avenue, Waukesha, WI 53186",
+          phone: "(262) 549-8726",
+          email: "info@hopecenterwi.org",
+          website: "https://hopecenterwi.org",
+          status: "Open Now",
+          about: "Serving the basic needs of people in Waukesha County who are experiencing hardship.",
+          services: ["Free clothing", "Hot meals", "Emergency financial aid"],
+          members: ["Executive Director", "Program Manager", "Volunteer Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        // Youth & Education
+        {
+          id: 22,
+          name: "Boys & Girls Clubs of Greater Milwaukee",
+          category: "Youth Development",
+          address: "1558 N. 6th Street, Milwaukee, WI 53212",
+          phone: "(414) 267-8100",
+          email: "info@bgcmilwaukee.org",
+          website: "https://www.bgcmilwaukee.org",
+          status: "After-School Hours",
+          about: "Providing after-school and summer programming for thousands of Milwaukee youth.",
+          services: ["After-school programs", "Youth mentorship", "Academic support"],
+          members: ["Jeff Snell", "Program Director", "Site Manager"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 23,
+          name: "Big Brothers Big Sisters of Metro Milwaukee",
+          category: "Youth Development",
+          address: "788 N. Jefferson Street, Suite 600, Milwaukee, WI 53202",
+          phone: "(414) 258-4778",
+          email: "info@bbbsmilwaukee.org",
+          website: "http://www.bbbsmilwaukee.org",
+          status: "Open Now",
+          about: "Creating and supporting one-to-one mentoring relationships for youth.",
+          services: ["One-to-one youth mentoring"],
+          members: ["Amy Chionchio", "Matching Specialist", "Recruitment Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 24,
+          name: "COA Youth & Family Centers",
+          category: "Family Support",
+          address: "909 E. North Avenue, Milwaukee, WI 53212",
+          phone: "(414) 263-8383",
+          email: "info@coa-yfc.org",
+          website: "https://www.coa-yfc.org",
+          status: "Open Now",
+          about: "Providing educational, recreational and social work programs for children and families.",
+          services: ["Early childhood education", "After-school programs", "Family resource center"],
+          members: ["Tom Schneider", "Early Education Director", "Youth Program Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 25,
+          name: "TRUE Skool",
+          category: "Youth Development",
+          address: "161 W. Wisconsin Ave, Milwaukee, WI 53203",
+          phone: "(414) 800-5134",
+          email: "info@trueskool.org",
+          website: "https://www.trueskool.org",
+          status: "Program Hours Vary",
+          about: "An arts-based youth organization focused on leadership development and creative expression.",
+          services: ["Hip-hop arts education", "Leadership development for youth"],
+          members: ["Executive Director", "Arts Program Coordinator", "Youth Mentor"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 26,
+          name: "Neu-Life Community Development",
+          category: "Youth Development",
+          address: "2014 W. North Avenue, Milwaukee, WI 53205",
+          phone: "(414) 933-4973",
+          email: "info@neu-life.org",
+          website: "https://www.neu-life.org",
+          status: "After-School Hours",
+          about: "Providing year-round programs for youth focused on leadership development and healthy choices.",
+          services: ["After-school programs", "Youth leadership and arts"],
+          members: ["Executive Director", "Program Coordinator", "Youth Mentor"],
+          projects: [],
+          linkedWith: []
+        },
+        {
+          id: 27,
+          name: "Journey House",
+          category: "Community Development",
+          address: "2110 W. Scott Street, Milwaukee, WI 53204",
+          phone: "(414) 647-0548",
+          email: "info@journeyhouse.org",
+          website: "https://www.journeyhouse.org",
+          status: "Open Now",
+          about: "Working to enhance the social and economic development of Milwaukee's near south side.",
+          services: ["Adult education", "Youth athletics and after-school", "Family support services"],
+          members: ["Dr. Michele Bria", "Education Director", "Youth Sports Coordinator"],
+          projects: [],
+          linkedWith: []
+        },
+        // Add more organizations here...
+        // This is just a sample - you would include all 100 organizations in a real implementation
+        // For brevity, I've stopped at 27 organizations in this example
+      ];
+
+      // Additional organizations would be added here...
+      // Organizations from 28-100 would follow the same pattern
+
+      // Global variables for linking functionality
+      let linkingInProgress = false;
+      let sourceLinkOrgId = null;
+      let selectedForLinking = [];
+      let linkGroupCount = 0;
+
+      /* --- Render Organization Cards --- */
+      function renderOrgCards() {
+        const container = document.getElementById("org-cards");
+        container.innerHTML = "";
+        const searchTerm = document.getElementById("crm-search").value.toLowerCase();
+        const selectedCategory = document.getElementById("crm-category").value;
+        
+        organizations.forEach(org => {
+          // Filter by search and category
+          if (searchTerm && !org.name.toLowerCase().includes(searchTerm)) return;
+          if (selectedCategory && org.category !== selectedCategory) return;
+          
+          // Determine gradient based on category
+          let gradientClass = "from-blue-500 to-blue-600";
+          if (org.category === "Youth Development") gradientClass = "from-yellow-500 to-yellow-600";
+          else if (org.category === "Food Security" || org.category === "Food Assistance") gradientClass = "from-green-500 to-green-600";
+          else if (org.category === "Community Development") gradientClass = "from-purple-500 to-purple-600";
+          else if (org.category === "Employment" || org.category === "Workforce Development") gradientClass = "from-red-500 to-red-600";
+          else if (org.category === "Housing" || org.category === "Housing Improvement") gradientClass = "from-indigo-500 to-indigo-600";
+          else if (org.category === "Mental Health" || org.category === "Mental Health Support") gradientClass = "from-pink-500 to-pink-600";
+          
+          const initials = org.name.split(" ").map(w => w[0]).join("");
+          const card = document.createElement("div");
+          card.className = "org-card bg-white rounded-xl shadow-md overflow-hidden";
+          card.dataset.orgId = org.id;
+          
+          // Add link group class if part of a link group
+          if (org.linkGroup) {
+            card.classList.add(`link-group-${org.linkGroup % 6 + 1}`);
+          }
+          
+          // Add class if selected for linking
+          if (selectedForLinking.includes(org.id)) {
+            card.classList.add('selected-for-link');
+          }
+          
+          // Add linkable class if in linking mode but not yet selected
+          if (linkingInProgress && !selectedForLinking.includes(org.id) && org.id !== sourceLinkOrgId) {
+            card.classList.add('linkable');
+          }
+          
+          card.innerHTML = `
+            <div class="h-3 bg-gradient-to-r ${gradientClass}"></div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div class="flex items-center">
+                  <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-800 font-medium mr-3">
+                    ${initials}
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-gray-900">${org.name}</h3>
+                    <span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">${org.category}</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-600 text-sm mb-4">${org.about.substring(0, 100)}...</p>
+              <div class="flex items-center text-sm text-gray-500 mb-1">
+                <i class="fas fa-map-marker-alt mr-2"></i>
+                <span>${org.address}</span>
+              </div>
+              <div class="flex items-center text-sm text-gray-500 mb-4">
+                <i class="fas fa-phone mr-2"></i>
+                <span>${org.phone}</span>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                <div class="flex">
+                  <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">${org.status}</span>
+                </div>
+                <div class="space-x-2">
+                  <button class="text-blue-600 hover:text-blue-800 text-sm font-medium org-details-trigger" data-org-id="${org.id}">View Details</button>
+                  <button class="text-indigo-600 hover:text-indigo-800 text-sm font-medium" onclick="viewMapping(${org.id})">Mapping</button>
+                  <button class="text-purple-600 hover:text-purple-800 text-sm font-medium request-link-btn" data-org-id="${org.id}">
+                    ${sourceLinkOrgId === org.id ? 'Link Now' : 'Request Link'}
+                  </button>
+                  <button class="text-green-600 hover:text-green-800 text-sm font-medium" onclick="addProject(${org.id})">Add Project</button>
+                </div>
+              </div>
+            </div>
+          `;
+          
+          // Add event listener for linkable cards in linking mode
+          if (linkingInProgress && org.id !== sourceLinkOrgId && !selectedForLinking.includes(org.id)) {
+            card.addEventListener('click', function(e) {
+              // Prevent event from triggering if clicked on a button
+              if (e.target.tagName === 'BUTTON') return;
+              
+              toggleOrgSelection(org.id);
+            });
+          }
+          
+          container.appendChild(card);
+        });
+        
+        // Set up event listeners for Request Link buttons
+        document.querySelectorAll('.request-link-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const orgId = parseInt(this.getAttribute('data-org-id'));
+            if (sourceLinkOrgId === orgId) {
+              completeOrgLinking();
+            } else {
+              startOrgLinking(orgId);
+            }
+          });
+        });
+      }
+
+      /* --- Organization Linking Functions --- */
+      function startOrgLinking(orgId) {
+        linkingInProgress = true;
+        sourceLinkOrgId = orgId;
+        selectedForLinking = [];
+        
+        // Show the linking mode banner
+        document.getElementById('link-mode-banner').classList.remove('hidden');
+        
+        // Update UI
+        renderOrgCards();
+      }
+      
+      function toggleOrgSelection(orgId) {
+        if (selectedForLinking.includes(orgId)) {
+          // Remove from selection
+          selectedForLinking = selectedForLinking.filter(id => id !== orgId);
+        } else {
+          // Add to selection
+          selectedForLinking.push(orgId);
+        }
+        
+        // Update UI
+        renderOrgCards();
+      }
+      
+      function completeOrgLinking() {
+        if (selectedForLinking.length === 0) {
+          alert('No organizations selected for linking.');
+          cancelOrgLinking();
+          return;
+        }
+        
+        // Create a new link group
+        linkGroupCount++;
+        const groupId = linkGroupCount;
+        
+        // Add source org to the link group
+        const sourceOrg = organizations.find(o => o.id === sourceLinkOrgId);
+        sourceOrg.linkGroup = groupId;
+        
+        // Add selected orgs to the link group
+        selectedForLinking.forEach(id => {
+          const org = organizations.find(o => o.id === id);
+          org.linkGroup = groupId;
+        });
+        
+        // For each org, ensure linkedWith array includes all others in the group
+        const allLinkedIds = [sourceLinkOrgId, ...selectedForLinking];
+        allLinkedIds.forEach(id1 => {
+          const org1 = organizations.find(o => o.id === id1);
+          if (!org1.linkedWith) org1.linkedWith = [];
+          
+          allLinkedIds.forEach(id2 => {
+            if (id1 !== id2 && !org1.linkedWith.includes(id2)) {
+              org1.linkedWith.push(id2);
+            }
+          });
+        });
+        
+        // Reset linking mode
+        cancelOrgLinking();
+        
+        // Show success message
+        alert(`Successfully linked ${selectedForLinking.length + 1} organizations.`);
+      }
+      
+      function cancelOrgLinking() {
+        linkingInProgress = false;
+        sourceLinkOrgId = null;
+        selectedForLinking = [];
+        
+        // Hide the linking mode banner
+        document.getElementById('link-mode-banner').classList.add('hidden');
+        
+        // Update UI
+        renderOrgCards();
+      }
+      
+      // Set up cancel button for linking mode
+      document.getElementById('cancel-linking').addEventListener('click', cancelOrgLinking);
+
+      /* --- Initialize Search and Filters --- */
+      document.getElementById("crm-search").addEventListener("keyup", renderOrgCards);
+      document.getElementById("crm-category").addEventListener("change", renderOrgCards);
+      document.addEventListener("DOMContentLoaded", function() {
+        renderOrgCards();
+      });
+
+      /* --- Organization Details Modal --- */
+      document.addEventListener("click", function(e) {
+        // Skip if in linking mode and clicking on a card
+        if (linkingInProgress && e.target.closest('.org-card') && !e.target.classList.contains('org-details-trigger')) {
+          return;
+        }
+        
+        if (e.target && e.target.closest(".org-details-trigger")) {
+          const btn = e.target.closest(".org-details-trigger");
+          const orgId = parseInt(btn.getAttribute("data-org-id"));
+          const org = organizations.find(o => o.id === orgId);
+          if (org) {
+            document.getElementById("org-details-name").textContent = org.name;
+            const catContainer = document.getElementById("org-details-category-container");
+            catContainer.innerHTML = `<span class="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">${org.category}</span>
+                                      <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">${org.status}</span>`;
+            document.getElementById("org-details-logo").textContent = org.name.split(" ").map(w => w[0]).join("");
+            document.getElementById("org-details-about").textContent = org.about;
+            
+            // Render services list
+            const svcList = document.getElementById("org-details-services");
+            svcList.innerHTML = "";
+            org.services.forEach(svc => {
+              const li = document.createElement("li");
+              li.textContent = svc;
+              svcList.appendChild(li);
+            });
+            
+            // Render projects list
+            const projectsContainer = document.getElementById("org-projects-container");
+            projectsContainer.innerHTML = "";
+            if (org.projects && org.projects.length > 0) {
+              org.projects.forEach(project => {
+                const div = document.createElement("div");
+                div.className = "p-3 bg-gray-50 rounded-lg";
+                div.innerHTML = `
+                  <h4 class="font-semibold text-gray-800">${project.title}</h4>
+                  <p class="text-sm text-gray-600">${project.description}</p>
+                `;
+                projectsContainer.appendChild(div);
+              });
+            } else {
+              projectsContainer.innerHTML = '<p class="text-gray-500">No projects yet.</p>';
+            }
+            
+            // Render linked organizations list
+            const linkedOrgsContainer = document.getElementById("linked-orgs-list");
+            linkedOrgsContainer.innerHTML = "";
+            if (org.linkedWith && org.linkedWith.length > 0) {
+              org.linkedWith.forEach(linkedId => {
+                const linkedOrg = organizations.find(o => o.id === linkedId);
+                if (linkedOrg) {
+                  const div = document.createElement("div");
+                  div.className = "p-2 bg-blue-50 rounded-lg flex justify-between items-center";
+                  div.innerHTML = `
+                    <span class="font-medium text-blue-800">${linkedOrg.name}</span>
+                    <button class="text-xs text-blue-600 hover:text-blue-800 view-linked-org" data-org-id="${linkedOrg.id}">View</button>
+                  `;
+                  linkedOrgsContainer.appendChild(div);
+                }
+              });
+            } else {
+              linkedOrgsContainer.innerHTML = '<p class="text-gray-500">No linked organizations yet.</p>';
+            }
+            
+            // Fill in contact info
+            document.getElementById("org-modal-address").innerHTML = `<a href="geo:0,0?q=${encodeURIComponent(org.address)}" target="_blank">${org.address}</a>`;
+            document.getElementById("org-modal-phone").innerHTML = `<a href="tel:${org.phone.replace(/\D/g,'')}">${org.phone}</a>`;
+            document.getElementById("org-modal-email").innerHTML = `<a href="mailto:${org.email}">${org.email}</a>`;
+            document.getElementById("org-modal-website").innerHTML = `<a href="${org.website}" target="_blank">${org.website}</a>`;
+            
+            // Set up request link button in modal
+            const modalRequestLinkBtn = document.getElementById("modal-request-link");
+            modalRequestLinkBtn.setAttribute("data-org-id", org.id);
+            modalRequestLinkBtn.textContent = "Request Link";
+            
+            // Show modal
+            document.getElementById("org-details-modal").classList.add("active");
+            
+            // Set up event listeners for modal buttons
+            setupModalEventListeners(orgId);
+          }
+        }
+      });
+      
+      function setupModalEventListeners(orgId) {
+        // Close button
+        document.getElementById("close-org-details").addEventListener("click", function() {
+          document.getElementById("org-details-modal").classList.remove("active");
+        });
+        
+        // View linked org buttons
+        document.querySelectorAll('.view-linked-org').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const linkedOrgId = parseInt(this.getAttribute('data-org-id'));
+            // Close current modal
+            document.getElementById("org-details-modal").classList.remove("active");
+            // Find and click the view details button for the linked org
+            setTimeout(() => {
+              const linkedOrgCard = document.querySelector(`.org-details-trigger[data-org-id="${linkedOrgId}"]`);
+              if (linkedOrgCard) linkedOrgCard.click();
+            }, 300);
+          });
+        });
+        
+        // Request link button in modal
+        document.getElementById("modal-request-link").addEventListener("click", function() {
+          const modalOrgId = parseInt(this.getAttribute('data-org-id'));
+          // Close modal
+          document.getElementById("org-details-modal").classList.remove("active");
+          // Start linking
+          setTimeout(() => {
+            startOrgLinking(modalOrgId);
+          }, 300);
+        });
+        
+        // Add project button
+        document.getElementById("add-project").addEventListener("click", function() {
+          addProject(orgId);
+        });
+      }
+
+      /* --- Mapping Functionality --- */
+      function viewMapping(orgId) {
+        const org = organizations.find(o => o.id === orgId);
+        if (org) {
+          // For demo purposes, simply alert the member list.
+          alert("Mapping for " + org.name + ":\nMembers: " + (org.members.join(", ") || "None"));
+        }
+      }
+
+      /* --- Add Project Functionality --- */
+      function addProject(orgId) {
+        const org = organizations.find(o => o.id === orgId);
+        if (!org) return;
+        
+        const projectTitle = prompt("Enter project title for " + org.name + ":");
+        if (!projectTitle) return;
+        
+        const projectDesc = prompt("Enter project description:");
+        if (!projectDesc) return;
+        
+        if (!org.projects) org.projects = [];
+        
+        org.projects.push({ 
+          title: projectTitle, 
+          description: projectDesc,
+          date: new Date().toISOString().split('T')[0]
+        });
+        
+        alert("Project added for " + org.name);
+        
+        // Update UI if modal is open
+        if (document.getElementById("org-details-modal").classList.contains("active")) {
+          const projectsContainer = document.getElementById("org-projects-container");
+          const div = document.createElement("div");
+          div.className = "p-3 bg-gray-50 rounded-lg";
+          div.innerHTML = `
+            <h4 class="font-semibold text-gray-800">${projectTitle}</h4>
+            <p class="text-sm text-gray-600">${projectDesc}</p>
+          `;
+          projectsContainer.appendChild(div);
+        }
+      }
+
+      /* --- Tools Dropdown Logic --- */
+      function setupToolDropdown(buttonId, dropdownId) {
+        const btn = document.getElementById(buttonId);
+        const dd = document.getElementById(dropdownId);
+        
+        btn.addEventListener("click", function(e) {
+          e.stopPropagation();
+          dd.classList.toggle("active");
+        });
+        
+        document.addEventListener("click", function() {
+          dd.classList.remove("active");
+        });
+      }
+      
+      setupToolDropdown("btn-notes", "notes-dropdown");
+      setupToolDropdown("btn-charts", "charts-dropdown");
+      setupToolDropdown("btn-settings", "settings-dropdown");
+    </script>
+  </div>
+  <!-- End of CRM Interface Section -->
+
+  <!-- Navigation Script to switch between pages -->
+  <script>
+    // Intercept clicks on any link with href="./crm.html" to show the CRM interface.
+    document.querySelectorAll('a[href="./crm.html"]').forEach(function(el) {
+      el.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.getElementById("landing-page").style.display = "none";
+        document.getElementById("crm-page").style.display = "block";
+      });
+    });
+  </script>
+</body>
+</html>
